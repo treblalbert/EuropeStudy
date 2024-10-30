@@ -38,14 +38,14 @@ plt.figure(figsize=(14, 6))
 
 # Plot for the top 10 best countries
 plt.subplot(1, 2, 1)
-sns.barplot(data=top_10_best, x='Jobless Rate', y='Country', palette='viridis')
+sns.barplot(data=top_10_best, x='Jobless Rate', y='Country', palette="Greens_r")
 plt.title('Top 10 Best European Countries by Employment Rate')
 plt.xlabel('Jobless Rate (%)')
 plt.ylabel('Country')
 
 # Plot for the top 10 worst countries
 plt.subplot(1, 2, 2)
-sns.barplot(data=top_10_worst, x='Jobless Rate', y='Country', palette='magma')
+sns.barplot(data=top_10_worst, x='Jobless Rate', y='Country', palette="Reds")
 plt.title('Top 10 Worst European Countries by Employment Rate')
 plt.xlabel('Jobless Rate (%)')
 plt.ylabel('Country')
@@ -60,8 +60,8 @@ worst_jobless_rate_countries = top_10_worst['Country'].tolist()
 # Print the lists to a file
 with open('best_worst_jobless_rate.txt', 'w') as f:
     f.write("Top 10 Countries with Lowest Jobless Rate:\n")
-    f.write(", ".join(best_jobless_rate_countries) + "\n\n")
+    f.write("\n".join(best_jobless_rate_countries) + "\n\n")
     f.write("Top 10 Countries with Highest Jobless Rate:\n")
-    f.write(", ".join(worst_jobless_rate_countries) + "\n")
+    f.write("\n".join(worst_jobless_rate_countries) + "\n")
 
 print("Lists printed to 'best_worst_jobless_rate.txt'")

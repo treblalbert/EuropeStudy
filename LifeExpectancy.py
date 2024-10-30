@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 file_path = 'csv/life_expectancy_by_country.csv'
 data = pd.read_csv(file_path)
 
-# Extract the relevant columns
+# Extract relevant columns
 data = data[['country_name', 'year', 'value']]
 
 # List of European countries
@@ -21,29 +21,27 @@ european_countries = [
     "Spain", "Sweden", "Switzerland", "Ukraine", "United Kingdom", "Vatican City"
 ]
 
-# Filter the data to include only European countries
+# Filter data for European countries
 european_data = data[data['country_name'].isin(european_countries)]
 
-# Get the latest year of data for each country
+# Get latest year of data for each country
 latest_data = european_data.loc[european_data.groupby('country_name')['year'].idxmax()]
 
-# Rank the top 10 best life expectancy
+# Rank top 10 best and worst life expectancies
 top_10_best = latest_data.nlargest(10, 'value')
-
-# Rank the top 10 worst life expectancy
 top_10_worst = latest_data.nsmallest(10, 'value')
 
-# Create Seaborn tables for visualization
+# Plotting
 plt.figure(figsize=(12, 6))
 
 # Top 10 best life expectancy
 plt.subplot(1, 2, 1)
-ax1 = sns.barplot(x='value', y='country_name', data=top_10_best, palette='Blues_d')
+ax1 = sns.barplot(x='value', y='country_name', data=top_10_best, palette='Greens_d')
 plt.title('Top 10 Countries with Best Life Expectancy')
 plt.xlabel('Life Expectancy')
 plt.ylabel('Country')
 
-# Add life expectancy values on top of the bars
+# Annotate bars with life expectancy values
 for index, value in enumerate(top_10_best['value']):
     ax1.text(value, index, f'{value:.1f}', va='center')
 
@@ -54,18 +52,18 @@ plt.title('Top 10 Countries with Worst Life Expectancy')
 plt.xlabel('Life Expectancy')
 plt.ylabel('Country')
 
-# Add life expectancy values on top of the bars
+# Annotate bars with life expectancy values
 for index, value in enumerate(top_10_worst['value']):
     ax2.text(value, index, f'{value:.1f}', va='center')
 
+# Adjust layout and show plot
 plt.tight_layout()
 plt.show()
 
-# Prepare lists for printing to a file
+# Save best and worst life expectancy lists to a file
 best_life_expectancy_countries = top_10_best['country_name'].tolist()
 worst_life_expectancy_countries = top_10_worst['country_name'].tolist()
 
-# Print the lists to a file
 with open('best_worst_life_expectancy.txt', 'w') as f:
     f.write("Top 10 Countries with Best Life Expectancy:\n")
     f.write(", ".join(best_life_expectancy_countries) + "\n\n")

@@ -31,13 +31,13 @@ worst_quality = latest_data.sort_values(by='AQI Value', ascending=False).head(10
 # Create a figure with two subplots
 fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
 
-# Plot the best air quality table
+# Plot the best air quality table with Greens palette
 sns.heatmap(best_quality[['Country', 'AQI Value']].set_index('Country').T, annot=True, fmt=".0f", cmap="Greens", cbar=False, ax=axes[0])
 axes[0].set_title("Top 10 European Countries with Best Air Quality")
 axes[0].set_xlabel("Country")
 axes[0].set_ylabel("AQI Value")
 
-# Plot the worst air quality table
+# Plot the worst air quality table with Reds palette
 sns.heatmap(worst_quality[['Country', 'AQI Value']].set_index('Country').T, annot=True, fmt=".0f", cmap="Reds", cbar=False, ax=axes[1])
 axes[1].set_title("Top 10 European Countries with Worst Air Quality")
 axes[1].set_xlabel("Country")

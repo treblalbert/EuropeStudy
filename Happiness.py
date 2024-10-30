@@ -25,14 +25,14 @@ least_happy_countries = happiness_data.sort_values(by='Happiness Score').head(10
 # Create a figure with two subplots
 fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 6))
 
-# Plot the happiest countries table
-sns.heatmap(happiest_countries[['Country', 'Happiness Score']].set_index('Country').T, annot=True, fmt=".2f", cmap="Blues", cbar=False, ax=axes[0])
+# Plot the happiest countries table with Greens palette
+sns.heatmap(happiest_countries[['Country', 'Happiness Score']].set_index('Country').T, annot=True, fmt=".2f", cmap="Greens", cbar=False, ax=axes[0])
 axes[0].set_title("Top 10 Happiest European Countries")
 axes[0].set_xlabel("Country")
 axes[0].set_ylabel("Happiness Score")
 
-# Plot the least happy countries table
-sns.heatmap(least_happy_countries[['Country', 'Happiness Score']].set_index('Country').T, annot=True, fmt=".2f", cmap="Purples", cbar=False, ax=axes[1])
+# Plot the least happy countries table with Reds palette
+sns.heatmap(least_happy_countries[['Country', 'Happiness Score']].set_index('Country').T, annot=True, fmt=".2f", cmap="Reds", cbar=False, ax=axes[1])
 axes[1].set_title("Top 10 Least Happy European Countries")
 axes[1].set_xlabel("Country")
 axes[1].set_ylabel("Happiness Score")
