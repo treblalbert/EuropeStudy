@@ -1,0 +1,5 @@
+Top 10 Countries with Best Life Expectancy:
+San Marino, Norway, Switzerland, Iceland, Malta, Sweden, Italy, Spain, Ireland, France
+
+Top 10 Countries with Worst Life Expectancy:
+Azerbaijan, Moldova, Ukraine, Armenia, Georgia, Bulgaria, Belarus, Serbia, Romania, Lithuania
